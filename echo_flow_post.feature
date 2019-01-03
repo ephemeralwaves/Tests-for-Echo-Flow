@@ -3,7 +3,7 @@ Feature: Should notify a new user about edits to their post done by Admin
  @https://en.wikipedia.beta.wmflabs.org/wiki/Special:ApiSandbox
  Background: 
     Given an admin user
-    And the flow/structed discussion enabled under beta preferences
+    And the flow/structured discussion enabled under beta preferences
     And I have a user talk page with one topic and content populated with random text
     
   Scenario: Admin creates a new user

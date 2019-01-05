@@ -22,7 +22,7 @@ Feature: Should notify a new user about edits to their post done by Admin
     And I write a post with the the content ’Text to be edited by Admin’ and submit
     Then I see that my post is added to the talk page
 
-  Scenario: Admin edits random users reply text
+  Scenario: Admin edits new user's reply text
     Given I am logged in as the admin user and on my talk page
     When I edit the post created by the new user by appending ‘- confirmed, edited by Admin’ to the content
     Then I see that change made to the post

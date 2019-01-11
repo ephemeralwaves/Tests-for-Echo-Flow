@@ -13,16 +13,15 @@ describe( 'Echo', function () {
         var password,
             username;
         username = Util.getTestString( 'NewUser-' );
-		password = Util.getTestString();
+	password = Util.getTestString();
         
         //Given there is an admin user on the Create Account page
         UserLoginPage.login( browser.options.username, browser.options.password );
-		UserLoginPage.open();
+	UserLoginPage.open();
         //When I enter a new user name and password and submit
-		CreateAccountPage.createAccount( username, password )
+	CreateAccountPage.createAccount( username, password )
         //Then a new user is created
-        assert.strictEqual( CreateAccountPage.heading.getText(), `Welcome, ${username}!` );
-
+        assert.strictEqual(EchoPage.newuserconfirm.getText(), `The user account for ${username} (talk) has been created.\nReturn to Special:CreateAccount.`)
     } );
 
 } );

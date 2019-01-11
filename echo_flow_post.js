@@ -23,5 +23,14 @@ describe( 'Echo', function () {
         //Then a new user is created
         assert.strictEqual(EchoPage.newuserconfirm.getText(), `The user account for ${username} (talk) has been created.\nReturn to Special:CreateAccount.`)
     } );
+    
+    it( 'New user logs in', function () {   
+        //Given admin created a new user
+        //When the new user enters credentials on the login page
+        UserLoginPage.login(username, password);
+        //Then the new user is logged in
+        UserLoginPage.open();
+        assert.strictEqual(EchoPage.newusernav.getText(), `${username}`);
+   } );
 
 } );

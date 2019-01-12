@@ -4,8 +4,7 @@ var assert = require ('assert'),
 	EchoPage = require ( '../pageobjects/echo.page' ),
 	UserLoginPage = require( 'wdio-mediawiki/LoginPage' ),
 	CreateAccountPage = require( '../../../../../tests/selenium/pageobjects/createaccount.page' ),
-    Util = require( 'wdio-mediawiki/Util' ),
-	Api = require( 'wdio-mediawiki/Api' );
+    	Util = require( 'wdio-mediawiki/Util' );
 
 describe( 'Echo', function () {
 

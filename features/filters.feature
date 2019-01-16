@@ -1,7 +1,7 @@
-Feature: Filters are present on various pages
+Feature: Filters are present on Recent Changes and Watchlist pages
     
   Scenario: Filters are present
-    Given I am user that is not logged in
+    Given I am an anon user
     When I go on the Recent Changes page
     Then filters are present
     
@@ -11,11 +11,11 @@ Feature: Filters are present on various pages
     Then I see different groups of filters
     
   Scenario: Filters and bookmark icon are present for Admin
-    Given I have logged in as an admin user
+    Given I am a logged in user
     When I go on the Recent Changes page
     Then filters and bookmark icon are present
     
   Scenario: Filters are present on Watchlist page for Admin
-    Given I have logged in as an admin user
+    Given I am a logged in user
     When I go on the Watchlist page
     Then filters are present

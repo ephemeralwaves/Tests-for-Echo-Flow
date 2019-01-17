@@ -1,33 +1,27 @@
 Feature: Smoke test
+ Background: 
+    Given an admin user
+    
+  Scenario: Admin creates a new user
+    Given there is an admin user on the Create Account page
+    When I enter a new user name and password and submit
+    Then a new user is created
+    
+  Scenario: New user logs in
+    Given admin created a new user
+    When the new user enters credentials on the login page
+    Then the new user is logged in
 
   Scenario: Alerts and notices are visible after logging in
-    Given I created an account
-    When I login
+    Given I am a new logged in user
     Then alerts and notices are visible.
 
   Scenario: Check for welcome message after signin
-    Given I created an account
-    When I login
-    And I click the noctices icon
+    Given I am a new logged in user
+    When I click the noctices icon
     Then I see a welcome message
   
-  Scenario: Notify user about mention on wikitext page
-    Given I created an account
-    When I edit a page 
-    And create another random user
-    And mention that random user
-    And login with that random user
-    And I click on the alerts icon
-    Then I see the message that random user has been mentioned
-    
-  @en.wikipedia.beta.wmflabs.org
-  Scenario: Post to structed discussion page
-    Given I created an account
-    When I go to the Beta Page
-    And I enable Structured Discussions on User talk pages
-    And I click save
-    And go to the structured discussion page
-    And I type a random string to Topic 
-    And I post a random string to comments
-    And I click Add Topic
-    Then I see my new Topic and comments
+  Scenario: Check for Notifications Page
+    Given I am a new logged in user
+    When I go to the Notifications Page
+    Then I see the Notification title

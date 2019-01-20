@@ -16,12 +16,12 @@ Feature: Smoke test
     Given I am a new logged in user
     Then alerts and notices are visible.
 
-  Scenario: Check for welcome message after signin
+  Scenario: Checks for welcome message after signin
     Given I am a new logged in user
-    When I click the noctices icon
+    When I click the notices icon
     Then I see a welcome message
   
-  Scenario: Check for Notifications Page
+  Scenario: Checks for Notifications Page
     Given I am a new logged in user
     When I go to the Notifications Page
     Then I see the Notification title

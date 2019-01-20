@@ -4,32 +4,72 @@ var assert = require ('assert'),
 	EchoPage = require ( '../pageobjects/echo.page' ),
 	UserLoginPage = require( 'wdio-mediawiki/LoginPage' ),
 	CreateAccountPage = require( '../../../../../tests/selenium/pageobjects/createaccount.page' ),
-    	Util = require( 'wdio-mediawiki/Util' );
+    Util = require( 'wdio-mediawiki/Util' );
+    
+var password,
+    username;
 
-describe( 'Echo', function () {
+describe( 'Smoke test for Echo', function () {
+    
+    /**
+     *Given there is an admin user on the Create Account page
+     *When I enter a new user name and password and submit
+     *Then a new user is created
+	 */
 
-	it( 'Admin creates a new user', function () {
-        var password,
-            username;
+	it( 'admin creates a new user', function () {
         username = Util.getTestString( 'NewUser-' );
-	password = Util.getTestString();
+		password = Util.getTestString();
         
-        //Given there is an admin user on the Create Account page
         UserLoginPage.login( browser.options.username, browser.options.password );
-	UserLoginPage.open();
-        //When I enter a new user name and password and submit
-	CreateAccountPage.createAccount( username, password )
-        //Then a new user is created
-        assert.strictEqual(EchoPage.newuserconfirm.getText(), `The user account for ${username} (talk) has been created.\nReturn to Special:CreateAccount.`)
+		UserLoginPage.open();
+		CreateAccountPage.createAccount( username, password );
+        assert.strictEqual(EchoPage.newUserConfirm.getText(), `The user account for ${username} (talk) has been created.\nReturn to Special:CreateAccount.`);
     } );
     
-    it( 'New user logs in', function () {   
-        //Given admin created a new user
-        //When the new user enters credentials on the login page
+    /**
+     *Given admin created a new user
+     *When the new user enters credentials on the login page
+     *Then the new user is logged in
+	 */
+    
+    it( 'new user logs in', function () {   
         UserLoginPage.login(username, password);
-        //Then the new user is logged in
         UserLoginPage.open();
-        assert.strictEqual(EchoPage.newusernav.getText(), `${username}`);
-   } );
-
+        assert.strictEqual(EchoPage.newUserNav.getText(), `${username}`);
+    } );
+    
+    /**
+     *Given I am a new logged in user
+     *Then alerts and notices are visible.
+     */
+    it( 'alerts and notices are visible after logging in', function () {
+        assert( EchoPage.alerts.isExisting() );
+        assert( EchoPage.notices.isExisting() );
+        } );
+    
+    /**
+     *Given I am a new logged in user
+     *When I click the notices icon
+     *Then I see a welcome message
+     */
+    it( 'checks for welcome message after signin', function () {
+        EchoPage.notices.click();
+        EchoPage.welcomeNotice.waitForVisible();
+        assert( EchoPage.welcomeNotice.isExisting() );
+        } );
+    /**
+     *Given I am a new logged in user
+     *When I go to the Notifications Page
+     *Then I see the Notification title
+     */
+    it( 'checks for Notifications Page', function () {
+        
+        EchoPage.open();
+        //EchoPage.notificationHeading.waitForVisible();
+        assert.strictEqual(EchoPage.notificationHeading.getText(), `Notifications`);
+        //assert( EchoPage.notificationHeading.isExisting() );
+        } );
+    
+    
 } );

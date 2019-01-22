@@ -1,5 +1,5 @@
 Feature: Filters are present on Recent Changes and Watchlist pages
-    
+        
   Scenario: Filters are present
     Given I am an anon user
     When I go on the Recent Changes page

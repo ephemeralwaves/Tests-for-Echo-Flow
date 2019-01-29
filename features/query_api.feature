@@ -1,11 +1,13 @@
 Feature: Api tests Querying Notifications
 
+@/w/api.php?action=query&format=json&meta=notifications
   Scenario: A list of notifications are given when queried
     Given There is a created user that is logged in and has <x> notifications 
     When I set action to query 
     And I set meta to notifications
     Then the api result is the list of <x> notifications
-
+    
+@/w/api.php?action=query&format=json&meta=notifications&notfilter=read%7C!read&notprop=count
   Scenario: List both read and unread notifications counts
     Given There is a created user that is logged in and has at least <x> notifications, with half read and the other half unread
     When I set action to query 
@@ -19,6 +21,7 @@ Feature: Api tests Querying Notifications
     |  4   |
 #This  test fails when I try it on the wiki beta website, it only takes into account unread messages
 
+@/w/api.php?action=query&format=json&meta=unreadnotificationpages
   Scenario: A list of unread notifications are given when queried
     Given There is a created user that is logged in and has <x> unreadnotifications 
     When I set action to query 

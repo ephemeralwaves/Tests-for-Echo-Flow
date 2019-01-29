@@ -1,5 +1,6 @@
 Feature: Api tests for Marking Notifications
 
+@/w/api.php?action=echomarkread&format=json&list=&all=1&token=056fa811095e22ca4d48909d1f11b46b5c47d26e%2B%5C
   Scenario: All notifications are marked as read
     Given there is a created user that is logged in and has <x> notifications that are unread
     When I perform echomarkread action
@@ -12,6 +13,7 @@ Feature: Api tests for Marking Notifications
     |  3   |
     |  4   |
   
+  @no url because I can't get the notification number
   Scenario: All notifications are marked as unread
     Given There is a created user that is logged in and has <x> notifications that are read
     When I perform echomarkread action

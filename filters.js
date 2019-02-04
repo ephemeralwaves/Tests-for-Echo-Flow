@@ -3,7 +3,7 @@
 var assert = require( 'assert' ),
 	RecentChangesPage = require( '../pageobjects/recentchanges.page' ),
 	UserLoginPage = require( 'wdio-mediawiki/LoginPage' ),
-    WatchlistPage = require( '../pageobjects/watchlist.page' );
+    	WatchlistPage = require( '../pageobjects/watchlist.page' );
 
 describe( 'filters', function () {
 
@@ -14,7 +14,7 @@ describe( 'filters', function () {
      */
 	it( 'filters are present', function () {
 		RecentChangesPage.open();
-        RecentChangesPage.activeFilters.waitForVisible();
+        	RecentChangesPage.activeFilters.waitForVisible();
 		assert( RecentChangesPage.activeFilters.isExisting() );
 	} );
     
@@ -23,9 +23,10 @@ describe( 'filters', function () {
      *When I click on active filters
      *Then I see different groups of filters
      */
-    it( 'there are different groups of filters', function () {
-        RecentChangesPage.filterButton.waitForVisible();
-        RecentChangesPage.filterButton.click();
+	
+       it( 'there are different groups of filters', function () {
+		RecentChangesPage.filterButton.waitForVisible();
+		RecentChangesPage.filterButton.click();
 		assert( RecentChangesPage.filterDropDown.isExisting() );
 	} );
 
@@ -38,9 +39,9 @@ describe( 'filters', function () {
       it( 'filters and bookmark icon are present for user', function () {
 		UserLoginPage.login( browser.options.username, browser.options.password );
 		RecentChangesPage.open();
-        RecentChangesPage.activeFilters.waitForVisible();
+                RecentChangesPage.activeFilters.waitForVisible();
 		assert( RecentChangesPage.activeFilters.isExisting() );
-        assert( RecentChangesPage.bookmarkIcon.isExisting() );
+                assert( RecentChangesPage.bookmarkIcon.isExisting() );
         } );
      /**  
       *Given I am a logged in user
@@ -49,6 +50,6 @@ describe( 'filters', function () {
       */
       it( 'filters are present on Watchlist page for user', function () {
 		WatchlistPage.open();
-        assert( WatchlistPage.activeFilters.isExisting() );
+                assert( WatchlistPage.activeFilters.isExisting() );
 	} );
 } );

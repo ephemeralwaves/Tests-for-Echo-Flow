@@ -14,8 +14,8 @@ class EchoApi {
 		return new Promise( ( resolve ) => {
 			return bot.request( {
 				action: 'query',
-	            meta: 'notifications',
-	            notprop: 'count'
+	            		meta: 'notifications',
+	           		notprop: 'count'
 			 } ).then( ( response ) => {
 				resolve( response.query.notifications.count );
 			     } );

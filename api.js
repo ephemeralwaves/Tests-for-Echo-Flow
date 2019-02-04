@@ -2,7 +2,7 @@
 var	EchoPage = require ( '../pageobjects/echo.page' ),
 	EchoApi = require ( '../pageobjects/echo.api' ),
 	UserLoginPage = require( 'wdio-mediawiki/LoginPage' ),
-    assert = require ('assert');
+   	assert = require ('assert');
 
 describe( 'Api tests for Querying Notifications', function () {
     /*

@@ -12,7 +12,7 @@ describe( 'Api tests for Querying Notifications', function () {
     Then the api result is the list of <x> notification(s)
     */
     
-    it( 'A list of notifications are given when queried',  ()  => {
+    it( 'Lists notifications when queried',  ()  => {
         //Api
         var count;
         EchoApi.getNotificationsList().then( value => {

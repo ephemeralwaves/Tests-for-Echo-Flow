@@ -9,6 +9,7 @@ describe( 'Api tests for Querying Notifications', function () {
     Given there is a created user that is logged in and has <x> notification(s)
     When I set action to query 
     And I set meta to notifications
+    And notprop is set to 'count'
     Then the api result is the list of <x> notification(s)
     */
     

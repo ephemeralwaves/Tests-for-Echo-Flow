@@ -1,10 +1,11 @@
 Feature: Api tests Querying Notifications
 
 @/w/api.php?action=query&format=json&meta=notifications
-  Scenario: A list of notifications are given when queried
+  Scenario: Lists notifications when queried
     Given There is a created user that is logged in and has <x> notifications 
     When I set action to query 
     And I set meta to notifications
+    And notprop is set to 'count'
     Then the api result is the list of <x> notifications
     
 @/w/api.php?action=query&format=json&meta=notifications&notfilter=read%7C!read&notprop=count

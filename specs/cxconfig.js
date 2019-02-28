@@ -24,10 +24,8 @@ describe( 'API', function () {
 		} ).then( ( response ) => {
 
              console.log(response);
-            // { batchcomplete: '', query: { pages: { '1': [Object] } } }
 
              console.log(response.query);
-            // { '1': { pageid: 1, ns: 0, title: 'Main Page', revisions: [Array] } } }
 
             assert.equal( response.query, placeholder  );
 

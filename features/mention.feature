@@ -1,27 +1,16 @@
 Feature: User Mention Notifications
- Background: 
-    Given an admin user
-    
-Scenario: New user mentions admin on admin user page
-    Given admin creates new user and they are logged in
-    When the new user edits the admin user's page
-    And mention new user
-    Then the admin mention is visible on the admin user's page
+ Background:
+   Given a new user is created
+ 	 And they are logged in
+ 	 And new user edits a page to mentions admin on it
+ 	 And admin edits the admin page to mention the new user on it.
 
-  Scenario: Admin sees mention
-    Given admin is logged in
-    When admin clicks on the notification badge
-    Then admin see they were mentioned
+Scenario: Checks if admin gets alert when mentioned
+    Given admin logs in
+    When admin clicks on the alert badge
+    Then admin sees they were mentioned
 
-  Scenario: Admin mentions new user on new user page
-    Given admin is logged in
-    When admin goes to the new user user's page
-    And mentions the new user
-    Then the new user mention is visible on new user's page
-
-  Scenario: New user sees mention
-    Given new user is logged in
-    When new user clicks on the notification badge
+Scenario: Checks if new user gets alert when mentioned
+    Given new user logs in
+    When new user clicks on the alert badge
     Then new user sees they were mentioned
-
-
